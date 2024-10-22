@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS university;
+
 USE university;
 
 CREATE TABLE IF NOT EXISTS department(
@@ -7,7 +9,7 @@ CREATE TABLE IF NOT EXISTS department(
 );
 
 CREATE TABLE IF NOT EXISTS course(
-    course_id       BIGINT UNSIGNED NOT NULL UNIQUE PRIMARY KEY,
+    course_id       VARCHAR(255) NOT NULL UNIQUE PRIMARY KEY,
     title           VARCHAR(255) NOT NULL,
     credits         TINYINT UNSIGNED NOT NULL,
     dept_name       VARCHAR(255) NOT NULL,
@@ -15,8 +17,8 @@ CREATE TABLE IF NOT EXISTS course(
 );
 
 CREATE TABLE IF NOT EXISTS prereq(
-    course_id       BIGINT UNSIGNED NOT NULL,
-    prereq_id       BIGINT UNSIGNED NOT NULL,
+    course_id       VARCHAR(255) NOT NULL,
+    prereq_id       VARCHAR(255) NOT NULL,
     FOREIGN KEY(course_id) REFERENCES course(course_id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY(prereq_id) REFERENCES course(course_id) ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY(course_id, prereq_id)
@@ -54,7 +56,7 @@ CREATE TABLE IF NOT EXISTS classroom(
 );
 
 CREATE TABLE IF NOT EXISTS time_slot(
-    time_slot_id    BIGINT UNSIGNED NOT NULL,
+    time_slot_id    VARCHAR(255) NOT NULL,
     day             DATE NOT NULL,
     start_time      TIME NOT NULL,
     end_time        TIME NOT NULL,
@@ -62,16 +64,18 @@ CREATE TABLE IF NOT EXISTS time_slot(
 );
 
 CREATE TABLE IF NOT EXISTS section(
-    course_id       BIGINT UNSIGNED NOT NULL,
+    course_id       VARCHAR(255) NOT NULL,
     sec_id          BIGINT UNSIGNED NOT NULL,
     semester        VARCHAR(255) NOT NULL,
     year            INT UNSIGNED NOT NULL,
     building        VARCHAR(255) NOT NULL,
     room_number     INT UNSIGNED NOT NULL,
-    time_slot_id    BIGINT UNSIGNED NOT NULL,
+    time_slot_id    VARCHAR(255) NOT NULL,
     FOREIGN KEY(building, room_number) REFERENCES classroom(building, room_number) ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY(course_id, sec_id, semester, year)
 );
+
+DROP TRIGGER IF EXISTS check_time_slot_before_insert;
 
 DELIMITER $$
 CREATE TRIGGER check_time_slot_before_insert
@@ -88,11 +92,11 @@ DELIMITER ;
 
 CREATE TABLE IF NOT EXISTS takes(
     ID              BIGINT UNSIGNED NOT NULL,
-    course_id       BIGINT UNSIGNED NOT NULL,
+    course_id       VARCHAR(255) NOT NULL,
     sec_id          BIGINT UNSIGNED NOT NULL,
     semester        VARCHAR(255) NOT NULL,
     year            INT UNSIGNED NOT NULL,
-    grade           TINYINT UNSIGNED NOT NULL,
+    grade           VARCHAR(255) NOT NULL,
     FOREIGN KEY(ID) REFERENCES student(ID) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY(course_id, sec_id, semester, year) REFERENCES section(course_id, sec_id, semester, year) ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY(ID, course_id, sec_id, semester, year)
@@ -100,7 +104,7 @@ CREATE TABLE IF NOT EXISTS takes(
 
 CREATE TABLE IF NOT EXISTS teaches(
     ID              BIGINT UNSIGNED NOT NULL,
-    course_id       BIGINT UNSIGNED NOT NULL,
+    course_id       VARCHAR(255) NOT NULL,
     sec_id          BIGINT UNSIGNED NOT NULL,
     semester        VARCHAR(255) NOT NULL,
     year            INT UNSIGNED NOT NULL,
