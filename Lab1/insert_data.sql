@@ -64,38 +64,38 @@ REPLACE INTO classroom (building, room_number, capacity) VALUES
 ('Watson', 100, 80);
 
 REPLACE INTO section (course_id, sec_id, semester, year, building, room_number, time_slot_id) VALUES
-('BIO-101', 1, 'Summer', 2009, 'Painter', '514', 'B'),
-('BIO-301', 1, 'Summer', 2010, 'Painter', '514', 'A'),
-('BIO-399', 1, 'Winter', 2010, 'Painter', '514', 'C'),
-('CS-101', 1, 'Fall', 2009, 'Packard', '101', 'H'),
-('CS-101', 2, 'Spring', 2010, 'Packard', '101', 'F'),
-('CS-190', 1, 'Spring', 2009, 'Taylor', '3128', 'E'),
-('CS-190', 2, 'Fall', 2009, 'Taylor', '3128', 'A'),
-('CS-315', 1, 'Spring', 2010, 'Watson', '120', 'D'),
-('CS-319', 1, 'Spring', 2010, 'Watson', '100', 'B'),
-('CS-347', 1, 'Fall', 2009, 'Taylor', '3128', 'A'),
-('EE-181', 1, 'Spring', 2009, 'Taylor', '3128', 'B'),
-('FIN-201', 1, 'Spring', 2010, 'Packard', '101', 'C'),
-('HIS-351', 1, 'Fall', 2009, 'Painter', '514', 'D'),
-('MU-199', 1, 'Spring', 2010, 'Packard', '101', 'B'),
-('PHY-101', 1, 'Fall', 2009, 'Watson', '100', 'C');
+('BIO-101', 1, 'Summer', 2017, 'Painter', '514', 'B'),
+('BIO-301', 1, 'Summer', 2018, 'Painter', '514', 'A'),
+('CS-101', 1, 'Fall', 2017, 'Packard', '101', 'H'),
+('CS-101', 1, 'Spring', 2018, 'Packard', '101', 'F'),
+('CS-190', 1, 'Spring', 2017, 'Taylor', '3128', 'E'),
+('CS-190', 2, 'Spring', 2017, 'Taylor', '3128', 'A'),
+('CS-315', 1, 'Spring', 2018, 'Watson', '120', 'D'),
+('CS-319', 1, 'Spring', 2018, 'Watson', '100', 'B'),
+('CS-319', 2, 'Spring', 2018, 'Taylor', '3128', 'C'),
+('CS-347', 1, 'Fall', 2017, 'Taylor', '3128', 'A'),
+('EE-181', 1, 'Spring', 2017, 'Taylor', '3128', 'B'),
+('FIN-201', 1, 'Spring', 2018, 'Packard', '101', 'C'),
+('HIS-351', 1, 'Spring', 2018, 'Painter', '514', 'D'),
+('MU-199', 1, 'Spring', 2018, 'Packard', '101', 'B'),
+('PHY-101', 1, 'Fall', 2017, 'Watson', '100', 'C');
 
-REPLACE INTO teaches (ID, course_id, sec_id, semester, year) VALUES
-(10101, 'CS-101', 1, 'Fall', 2009),
-(10101, 'CS-101', 2, 'Spring', 2010),
-(12121, 'FIN-201', 1, 'Spring', 2010),
-(15151, 'MU-199', 1, 'Spring', 2010),
-(22222, 'PHY-101', 1, 'Fall', 2009),
-(32343, 'HIS-351', 1, 'Fall', 2009),
-(33456, 'BIO-101', 1, 'Summer', 2009),
-(33456, 'BIO-301', 1, 'Summer', 2010),
-(45565, 'CS-315', 1, 'Spring', 2010),
-(58583, 'CS-190', 1, 'Spring', 2009),
-(58583, 'CS-190', 2, 'Fall', 2009),
-(76543, 'BIO-399', 1, 'Winter', 2010),
-(76766, 'CS-319', 1, 'Spring', 2010),
-(83821, 'CS-347', 1, 'Fall', 2009),
-(98345, 'EE-181', 1, 'Spring', 2009);
+INSERT INTO teaches (ID, course_id, sec_id, semester, year) VALUES
+(10101, 'CS-101', 1, 'Fall', 2017),
+(10101, 'CS-315', 1, 'Spring', 2018),
+(10101, 'CS-347', 1, 'Fall', 2017),
+(12121, 'FIN-201', 1, 'Spring', 2018),
+(15151, 'MU-199', 1, 'Spring', 2018),
+(22222, 'PHY-101', 1, 'Fall', 2017),
+(32343, 'HIS-351', 1, 'Spring', 2018),
+(45565, 'CS-101', 1, 'Spring', 2018),
+(45565, 'CS-319', 1, 'Spring', 2018),
+(76766, 'BIO-101', 1, 'Summer', 2017),
+(76766, 'BIO-301', 1, 'Summer', 2018),
+(83821, 'CS-190', 1, 'Spring', 2017),
+(83821, 'CS-190', 2, 'Spring', 2017),
+(83821, 'CS-319', 2, 'Spring', 2018),
+(98345, 'EE-181', 1, 'Spring', 2017);
 
 REPLACE INTO student (ID, name, dept_name, tot_cred) VALUES
 (00128, 'Zhang', 'Comp. Sci.', 102),
@@ -109,18 +109,18 @@ REPLACE INTO student (ID, name, dept_name, tot_cred) VALUES
 (70557, 'Snow', 'Physics', 0),
 (76543, 'Brown', 'Comp. Sci.', 58);
 
-REPLACE INTO takes (ID, course_id, sec_id, semester, year, grade) VALUES
-(00128, 'CS-101', 1, 'Fall', 2009, 'A'),
-(00128, 'CS-347', 1, 'Fall', 2009, 'A-'),
-(12345, 'CS-101', 1, 'Fall', 2009, 'C'),
-(12345, 'CS-190', 2, 'Fall', 2009, 'A'),
-(19991, 'HIS-351', 1, 'Fall', 2009, 'B'),
-(23121, 'FIN-201', 1, 'Spring', 2010, 'B+'),
-(44553, 'PHY-101', 1, 'Fall', 2009, 'B-'),
-(45678, 'PHY-101', 1, 'Fall', 2009, 'A'),
-(54321, 'CS-101', 1, 'Fall', 2009, 'A-'),
-(54321, 'CS-315', 1, 'Spring', 2010, 'A'),
-(55739, 'MU-199', 1, 'Spring', 2010, 'B'),
-(70557, 'PHY-101', 1, 'Fall', 2009, 'F'),
-(76543, 'CS-101', 1, 'Fall', 2009, 'A'),
-(76543, 'CS-319', 1, 'Spring', 2010, 'A');
+INSERT INTO takes (ID, course_id, sec_id, semester, year, grade) VALUES
+(00128, 'CS-101', 1, 'Fall', 2017, 'A'),
+(00128, 'CS-315', 1, 'Spring', 2018, 'B'),
+(12345, 'CS-190', 1, 'Spring', 2017, 'B'),
+(12345, 'CS-319', 1, 'Spring', 2018, 'A'),
+(19991, 'HIS-351', 1, 'Spring', 2018, 'A'),
+(23121, 'FIN-201', 1, 'Spring', 2018, 'B'),
+(44553, 'PHY-101', 1, 'Fall', 2017, 'C'),
+(45678, 'BIO-101', 1, 'Summer', 2017, 'B'),
+(54321, 'CS-101', 1, 'Spring', 2018, 'A'),
+(54321, 'CS-347', 1, 'Fall', 2017, 'A'),
+(55739, 'MU-199', 1, 'Spring', 2018, 'B'),
+(70557, 'PHY-101', 1, 'Fall', 2017, 'C'),
+(76543, 'CS-190', 2, 'Spring', 2017, 'B'),
+(76543, 'CS-319', 2, 'Spring', 2018, 'A');
