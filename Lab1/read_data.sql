@@ -10,11 +10,11 @@ FROM teaches
 JOIN instructor ON teaches.ID = instructor.ID
 JOIN course ON teaches.course_id = course.course_id;
 
--- 查询2009年秋季（Fall）的所有课程及其所在的教室
+-- 查询2018年春季（Spring）的所有课程及其所在的教室
 SELECT course.title, section.building, section.room_number
 FROM section
 JOIN course ON section.course_id = course.course_id
-WHERE section.semester = 'Fall' AND section.year = 2009;
+WHERE section.semester = 'Spring' AND section.year = 2018;
 
 -- 查询每个系的平均预算
 SELECT dept_name, AVG(budget) AS avg_budget
